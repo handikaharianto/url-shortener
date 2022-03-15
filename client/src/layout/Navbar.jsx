@@ -3,7 +3,7 @@ import { CgLink } from "react-icons/cg";
 
 function Navbar() {
   return (
-    <nav className="bg-violet-700 p-4">
+    <nav className="absolute w-screen bg-violet-700 p-4">
       <div className="sm:container mx-auto">
         <h1 className="text-gray-100 text-3xl font-semibold">
           <Link to="/" className="flex items-center">
