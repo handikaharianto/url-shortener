@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 require("express-async-errors");
 require("dotenv").config();
 
@@ -9,10 +10,18 @@ const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
+// for production
+// app.use(express.static(path.resolve(__dirname, "./client/build")));
+
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/url", urlRouter);
+
+// for production
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+// });
 
 // Middlewares
 app.use(notFound);
