@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
+import Section from "../shared/Section";
+
 function NotFound() {
   return (
-    <section className="grid place-items-center h-screen text-gray-100">
+    <Section>
       <div className="text-center">
         <h1 className="font-extrabold text-7xl md:text-9xl">Oops!</h1>
         <p className="font-medium text-3xl md:text-5xl my-8">
@@ -15,7 +17,7 @@ function NotFound() {
           BACK TO HOME
         </Link>
       </div>
-    </section>
+    </Section>
   );
 }
 
