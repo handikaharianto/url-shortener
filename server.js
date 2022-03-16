@@ -10,10 +10,11 @@ const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // for production
 // app.use(express.static(path.resolve(__dirname, "./client/build")));
-
-app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/url", urlRouter);
