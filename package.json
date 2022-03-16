@@ -4,9 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js --ignore client",
+    "server": "nodemon server --ignore client",
     "client": "npm start --prefix client",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "build-client": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build-client"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +23,8 @@
     "express-async-errors": "^3.1.1",
     "mongoose": "^6.2.6",
     "nanoid": "^3.3.1"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

@@ -14,15 +14,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // for production
-// app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 // Routes
 app.use("/url", urlRouter);
 
 // for production
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 // Middlewares
 app.use(notFound);
