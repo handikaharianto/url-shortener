@@ -3,6 +3,7 @@ import { useState } from "react";
 import { postOriginalUrl } from "../api/api";
 import Section from "../shared/Section";
 import Form from "../components/Form";
+import Result from "../components/Result";
 
 function Home() {
   const [url, setUrl] = useState("");
@@ -26,14 +27,14 @@ function Home() {
     }
 
     setShortenedUrl(shortUrl);
+    setIsError(false);
     setIsLoading(false);
+    setErrorMessage("");
   };
 
   const handleChange = (e) => {
     setUrl(e.target.value);
   };
-
-  if (isLoading) return <h1>loading...</h1>;
 
   return (
     <Section>
@@ -44,8 +45,11 @@ function Home() {
           <span className="text-violet-700 font-extrabold"> better.</span>
         </h2>
         <Form handleSubmit={handleSubmit} handleChange={handleChange} />
-        {/* //TODO: add copy to clipboard here */}
-        {!isError ? <h4>{errorMessage}</h4> : <h4>{shortenedUrl}</h4>}
+        <Result
+          isError={isError}
+          errorMessage={errorMessage}
+          shortenedUrl={shortenedUrl}
+        />
       </div>
     </Section>
   );

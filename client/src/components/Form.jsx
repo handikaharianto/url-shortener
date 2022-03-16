@@ -6,6 +6,7 @@ function Form({ url, handleSubmit, handleChange }) {
         name="url"
         placeholder="Enter your URL"
         className="px-3 py-4 text-black rounded-md"
+        autoComplete="off"
         value={url}
         onChange={handleChange}
       />
