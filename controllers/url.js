@@ -5,7 +5,14 @@ const Url = require("../models/Url");
 const postOriginalUrl = async (req, res) => {
   let { url } = req.body;
 
-  if (!url) throw new Error("URL field cannot be empty!");
+  // Regex to validate URL
+  const regex =
+    /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+
+  if (!url || !regex.test(url)) {
+    res.status(400);
+    throw new Error("Please provide a valid URL!");
+  }
 
   // Generate slug using alphanumeric characters
   const alphanumericChars =
@@ -19,7 +26,9 @@ const postOriginalUrl = async (req, res) => {
 
   const { slug } = urlAndSlug;
 
-  res.status(201).json({ shortUrl: `${req.headers.host}/url/${slug}` });
+  res.status(201).json({
+    shortUrl: `${req.headers.host}/url/${slug}`,
+  });
 };
 
 const getShortenedUrl = async (req, res) => {
