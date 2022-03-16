@@ -12,7 +12,7 @@ function Form({ url, handleSubmit, handleChange }) {
       />
       <button
         type="submit"
-        className="bg-violet-700 text-black-700 font-semibold py-4 px-10 rounded-md"
+        className="bg-violet-700 text-black-700 font-semibold py-4 px-10 rounded-md transition linear duration-300 hover:bg-violet-600"
       >
         Shorten
       </button>
