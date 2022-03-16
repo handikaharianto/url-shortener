@@ -1,6 +1,6 @@
 const { customAlphabet } = require("nanoid");
 
-const Url = require("../models/Url");
+const Url = require("../models/url");
 
 const postOriginalUrl = async (req, res) => {
   let { url } = req.body;
